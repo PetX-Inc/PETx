@@ -1,14 +1,9 @@
-
-import HomePage from '../Pages/HomePage/HomePage';
-
-function App  () {
-  console.log("App Called.");
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
- 
-};
+import React from 'react';
+import Footer from '../Components/footer/Footer';
+function App() {
+return (
+	<Footer />
+);
+}
 
 export default App;
