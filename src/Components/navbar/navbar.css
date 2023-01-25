@@ -1,0 +1,18 @@
+@import '../../App/Root.css';
+
+
+  .navBg {
+    margin-top: 2vh;
+    display: flex;
+    background-color: rgba(var(--filter-light),var(--opacity-high));
+    padding: 0 var(--pad-medium);
+    height: 10vh;
+    border-radius: var(--rad-large);
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-medium);
+  }
+
+  .item {
+    text-align: center;
+  }
