@@ -1,5 +1,6 @@
 
 import HomePage from '../Pages/HomePage/HomePage';
+import './App.css'
 
 function App  () {
   console.log("App Called.");
