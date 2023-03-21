@@ -1,9 +1,0 @@
-@import './Root.css';
-
-body{
-    margin: 0;
-    padding: 0 var(--pad-medium);
-    background-color: var(--bg-light);
-    color: var(--text-light);
-  }
-  
