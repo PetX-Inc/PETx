@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import './Doctors.css'
 import {doctors} from '../helpers/Data'
 
-class Products extends Component
+class Doctor extends Component
 {
 	display_products = _ =>
 	{
@@ -60,4 +60,4 @@ class Products extends Component
 	}
 }
 
-export default Products
+export default Doctor;

@@ -6,24 +6,14 @@ let navbar_items = [
 		link: ''
 	},
 	{
-		name: 'About',
-		icon: 'fas fa-address-card',
-		link: 'about'
-	},
-	{
-		name: 'Products',
+		name: 'Doctors',
 		icon: 'fas fa-tv',
-		link: 'products'
+		link: 'doctors'
 	},
 	{
 		name: 'Blogs',
 		icon: 'fas fa-blog',
 		link: 'blogs'
-	},
-	{
-		name: 'FAQ',
-		icon: 'fas fa-question-circle',
-		link: 'faq'
 	},
 	{
 		name: 'Contact',
