@@ -47,7 +47,7 @@ let navbar_accounts = [
 	}
 ]
 
-let products = [
+let doctors = [
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'product 1' ,
@@ -187,7 +187,7 @@ export
 {
 	navbar_items,
 	navbar_accounts,
-	products,
+	doctors,
 	top_blogs,
 	recent_blogs,
 	faq_items,
