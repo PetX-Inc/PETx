@@ -1,18 +1,18 @@
 import React, {Component} from 'react'
-import Doctor from '../../comps/doctors/Doctor'
+import Blog from '../../comps/blogs/Blog' 
 
-class Doctors extends Component
+class Blogs extends Component
 {
     render()
     {
         return(
 
             <div className = '_body'>
-                <Doctor />
+                <Blog />
             </div>
             
         )
     }
 }
 
-export default Doctors;
+export default Blogs;

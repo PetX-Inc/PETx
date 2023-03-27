@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import './Blogs.css'
 import {top_blogs, recent_blogs} from '../helpers/Data'
 
-class Blogs extends Component
+class Blog extends Component
 {
 	display_top_blogs = _ =>
 	{
@@ -77,4 +77,4 @@ class Blogs extends Component
 	}
 }
 
-export default Blogs
+export default Blog;
