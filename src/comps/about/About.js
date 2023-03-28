@@ -5,6 +5,12 @@ import about from '../../images/pics/sosLight.svg'
 
 class About extends Component
 {
+	handleOnClick()
+	{
+		//Dumy code.
+		alert("SOS Clicked");
+	}
+
 	render()
 	{
 		return (
@@ -19,8 +25,8 @@ class About extends Component
 							</div>
 						</div>
 						<div className = "c col-md-6 col-12">
-							<div className = 'right-side text-lg-end text-center'>
-								<img className = 'img-fluid w-75 shadow-lg' src = {about} alt = 'about' />
+							<div className = 'right-side text-lg-end text-center' onClick={this.handleOnClick}>
+								<img className = 'img-fluid w-75 shadow-lg about' src = {about} alt = 'about' />
 							</div>
 						</div>
 					</div>

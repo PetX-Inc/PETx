@@ -1,13 +1,13 @@
 
 import React, {Component} from 'react'
-import './Products.css'
-import {products} from '../helpers/Data'
+import './Doctors.css'
+import {doctors} from '../helpers/Data'
 
-class Products extends Component
+class Doctor extends Component
 {
 	display_products = _ =>
 	{
-		let items = products.map(item =>
+		let items = doctors.map(item =>
 		{
 			return (
 				<div className = 'c col-lg-3 col-md-6 col-12 mb-3' key = {Math.random()}>
@@ -49,7 +49,7 @@ class Products extends Component
 			<section className = 'products py-5 mb-5' id = 'products'>
 				<div className = 'container'>
 					<div className = 'title'>
-						<h2 className = 'text-capitalize text-center mb-5 p-3 position-relative'>products</h2>
+						<h2 className = 'text-capitalize text-center mb-5 p-3 position-relative'>Doctors</h2>
 					</div>
 					<div className = 'row justify-content-center'>
 						{this.display_products()}
@@ -60,4 +60,4 @@ class Products extends Component
 	}
 }
 
-export default Products
+export default Doctor;

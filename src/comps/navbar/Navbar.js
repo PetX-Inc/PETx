@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import './Navbar.css'
 import {navbar_items} from '../helpers/Data'
 import {navbar_accounts} from '../helpers/Data'
+import { Link } from 'react-router-dom'
 
 
 class Navbar extends Component
@@ -13,7 +14,7 @@ class Navbar extends Component
 		{
 			return (
 				<li className = "nav-item link" key = {Math.random()}>
-			        <a className = "nav-link p-md-0 py-md-1 px-md-2 me-md-2" href = {`#${item.link}`}><i className = {`${item.icon} me-2`}></i>{item.name}</a>
+			        <Link className = "nav-link p-md-0 py-md-1 px-md-2 me-md-2" to = {`/${item.link}`}><i className = {`${item.icon} me-2`}></i>{item.name}</Link>
 			    </li>
 			)
 		})
@@ -22,13 +23,14 @@ class Navbar extends Component
 
 	display_navbar_accounts = _ =>
 	{
+		// if acc doesnt work, replace back link with a and to with href as normal without routing.
 		let accounts = navbar_accounts.map(item =>
 		{
 			return (
 				<li className="nav-item px-1 icon" key = {Math.random()}>
-	        		<a className="nav-link" href= {item.link} target = '_blank' rel="noreferrer">
+	        		<Link className="nav-link" to = {item.link} target = '_blank' rel="noreferrer">
 	        			<i className = {item.icon}></i>
-	        		</a>
+	        		</Link>
 	      		</li>
 			)
 		})
