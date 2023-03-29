@@ -4,7 +4,7 @@ import PageTemp from './pages/pageTemp/PageTemp';
 import LandingPage from './pages/LandingPage/LandingPage' 
 import Doctors from './pages/Doctors/Doctors' 
 import Blogs from './pages/Blogs/Blogs' 
-import ContactUs from './pages/ContactUs/ContactUs' 
+import ContactUs from './pages/Contact/Contact' 
 
 class App extends Component
 {
