@@ -1,0 +1,18 @@
+.blur-effect 
+{
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+}
+  
+
+
+
+/* Please test above. We'll add below then */
+.card
+{
+border-radius: 8px;
+backdrop-filter: blur(20px);
+background-color: rgba(255, 255, 255, 0.5); 
+box-shadow: 1px 12px rgba(0, 0, 0, 0.25); 
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
