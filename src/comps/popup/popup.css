@@ -8,7 +8,7 @@
 
 
 /* Please test above. We'll add below then */
-.card
+.blur-effect1
 {
 border-radius: 8px;
 backdrop-filter: blur(20px);
