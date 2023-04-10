@@ -49,7 +49,7 @@ class Popup extends Component {
 
     return (
       <div className="pop-up-button-wrapper">
-        <button onClick={this.openPopUp}>Open Pop-up</button>
+        <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button>
         {isOpen && (
           <div className="pop-up-background">
             <div className="pop-up-content" ref={(node) => (this.popUpRef = node)}>
@@ -95,6 +95,7 @@ class Popup extends Component {
                     )}
                     <div className="form-row form-buttons">
                       <button type="submit">Submit</button>
+                      
                       <button type="button" onClick={form.reset}>
                         Reset
                       </button>
@@ -116,4 +117,3 @@ class Popup extends Component {
 Popup.propTypes = {};
 
 export default Popup;
-

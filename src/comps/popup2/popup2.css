@@ -2,6 +2,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
+
 }
 
 .pop-up-background {
@@ -16,12 +17,58 @@
   align-items: center;
 }
 
+
+/* Form background it is */
 .pop-up-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
+
+.pop-up-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* .pop-up-button-wrapper:hover {
+  background-color: #0056b3;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+} */
+
+.pop-up-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.pop-up-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.pop-up-button:hover::before {
+  opacity: 1;
+}
+
+
 
 .form-row {
   margin-bottom: 10px;
