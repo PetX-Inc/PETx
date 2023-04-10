@@ -4,10 +4,10 @@ import Subscription from '../../comps/subscription/Subscription'
 import {MetaObjects} from '../../comps/helpers/Data'
 import MetaDecorator from '../../comps/MetaDecorator/MetaDecorator'
 
-// MohsinCode for PopUp
-//import PopUp from '../../comps/popup/popup'
+// MohsinCode below
 
 import PopUp from '../../comps/popup/popup'
+import LoginForm from '../../comps/loginsignup/Login'
 
 class LandingPage extends Component
 {
@@ -21,6 +21,7 @@ class LandingPage extends Component
 
                 {/* Dangerous Code by Mohsin */}
 
+                <LoginForm />
                 <PopUp />
 
                 <About />

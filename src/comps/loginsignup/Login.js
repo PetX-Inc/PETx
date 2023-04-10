@@ -1,28 +1,101 @@
-import React, { useState } from 'react';
-import './Auth.css';
+import "./Auth.css"; // import CSS file with blur-effect class
 
-const Login = ({ switchForm }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+import React, { useState } from "react";
+
+
+
+function LoginForm() {
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSignUpForm, setShowSignUpForm] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginClick = () => {
+    setShowLoginForm(true);
+    setShowSignUpForm(false);
+  };
+
+  const handleSignUpClick = () => {
+    setShowSignUpForm(true);
+    setShowLoginForm(false);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleLoginSubmit = (event) => {
     event.preventDefault();
-    // TODO: implement login logic
-  }
+    // handle login logic here
+  };
+
+  const handleSignUpSubmit = (event) => {
+    event.preventDefault();
+    // handle signup logic here
+  };
 
   return (
-    <div className="auth-container">
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
-        <p>Don't have an account? <a href="#" onClick={switchForm}>Sign up</a></p>
-      </form>
+    <div className="login-form">
+      <button onClick={handleLoginClick}>Login</button>
+      <button onClick={handleSignUpClick}>Sign Up</button>
+
+      {showLoginForm && (
+        <form onSubmit={handleLoginSubmit}>
+          <label>
+            Email:
+            <input type="email" value={email} onChange={handleEmailChange} />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </label>
+          <button type="submit">Login</button>
+          <button>Forgot Password</button>
+        </form>
+      )}
+
+      {showSignUpForm && (
+        <form onSubmit={handleSignUpSubmit}>
+          <label>
+            Email:
+            <input type="email" value={email} onChange={handleEmailChange} />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </label>
+          {/* Additional form fields for sign up */}
+          <button type="submit">Sign Up</button>
+        </form>
+      )}
     </div>
   );
 }
 
-export default Login;
+export default LoginForm;
+
+
+
+// function LoginPage() {
+//   return (
+//     <div>
+//       <h1>Login Page</h1>
+//       <LoginForm />
+//     </div>
+//   );
+// }
+
+// export default LoginPage;
