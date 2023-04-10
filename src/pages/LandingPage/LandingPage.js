@@ -5,8 +5,9 @@ import {MetaObjects} from '../../comps/helpers/Data'
 import MetaDecorator from '../../comps/MetaDecorator/MetaDecorator'
 
 // MohsinCode for PopUp
-import PopUpButton from '../../comps/popup2/popup2'
+//import PopUp from '../../comps/popup/popup'
 
+import PopUp from '../../comps/popup2/popup2'
 
 class LandingPage extends Component
 {
@@ -18,14 +19,15 @@ class LandingPage extends Component
             <div className = '_body'>
                 <MetaDecorator obj={MetaObject}/>
 
-
                 {/* Dangerous Code by Mohsin */}
-                <PopUpButton />
 
+                <PopUp />
 
                 <About />
                 <Subscription />
             </div>
+
+            
             
         )
     }

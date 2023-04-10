@@ -97,7 +97,7 @@ export default PopUp;
 //     const handleMouseDown = (event) => {
 //       if (popUpRef.current && !popUpRef.current.contains(event.target)) {
 //         onClose();
-//       }
+//       }=
 //     };
 //     document.body.classList.add("blur-effect"); // add blur-effect class to body element
 //     document.addEventListener("mousedown", handleMouseDown);
