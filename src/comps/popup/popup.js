@@ -1,128 +1,119 @@
-import React, { useRef, useEffect } from "react";
-import { Form, Field } from "react-final-form";
+import React, { useState, useEffect, useRef, Component } from 'react';
+import { Form, Field } from 'react-final-form';
+//import './PopupButton.css';
 import "./popup.css"; // import CSS file with blur-effect class
 
 
-const PopUp = ({ isDoctorForm, onClose, onSubmit }) => {
-  const popUpRef = useRef(null);
+//import React, { Component } from 'react';
+//import { Form, Field } from 'react-final-form';
 
-  useEffect(() => {
-    const handleMouseDown = (event) => {
-      if (popUpRef.current && !popUpRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-    document.body.classList.add("blur-effect"); // add blur-effect class to body element
-    document.addEventListener("mousedown", handleMouseDown);
-    return () => {
-      document.body.classList.remove("blur-effect"); // remove blur-effect class from body element
-      document.removeEventListener("mousedown", handleMouseDown);
-    };
-  }, [onClose]);
 
-  const handleFormSubmit = (values) => {
-    onSubmit(values);
-    onClose();
+//import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+//import { Form } from 'react-final-form';
+
+class Popup extends Component {
+  state = {
+    isOpen: false,
+    type: '',
   };
 
-  return (
-    <div className="popup-container">
-      <div className="popup" ref={popUpRef}>
-        <h2>{isDoctorForm ? "Doctor Form" : "SOS Form"}</h2>
-        <Form onSubmit={handleFormSubmit}>
-          {({ handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
-              <Field name="name">
-                {({ input }) => (
-                  <div>
-                    <label>Name:</label>
-                    <input {...input} type="text" required />
-                  </div>
-                )}
-              </Field>
-              <Field name="address">
-                {({ input }) => (
-                  <div>
-                    <label>Address:</label>
-                    <input {...input} type="text" required />
-                  </div>
-                )}
-              </Field>
-              <Field name="phone">
-                {({ input }) => (
-                  <div>
-                    <label>Phone:</label>
-                    <input {...input} type="text" required />
-                  </div>
-                )}
-              </Field>
-              {isDoctorForm ? (
-                <div>
-                  <label>Doctor:</label>
-                  <Field name="doctor" component="select" required>
-                    <option value="">Select a doctor</option>
-                    <option value="Dr. Smith ($100)">Dr. Smith ($100)</option>
-                    <option value="Dr. Johnson ($150)">
-                      Dr. Johnson ($150)
-                    </option>
-                    <option value="Dr. Patel ($200)">Dr. Patel ($200)</option>
-                  </Field>
-                </div>
-              ) : (
-                <div>
-                  <label>Description:</label>
-                  <Field name="description">
-                    {({ input }) => (
-                      <textarea {...input} rows={5} required />
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  handleClickOutside = (event) => {
+    if (this.popUpRef && !this.popUpRef.contains(event.target)) {
+      this.closePopUp();
+    }
+  };
+
+  openPopUp = () => {
+    this.setState({ isOpen: true });
+  };
+
+  closePopUp = () => {
+    this.setState({ isOpen: false });
+  };
+
+  handleTypeChange = (event) => {
+    this.setState({ type: event.target.value });
+  };
+
+  render() {
+    const { isOpen, type } = this.state;
+
+    return (
+      <div className="pop-up-button-wrapper">
+        <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button>
+        {isOpen && (
+          <div className="pop-up-background">
+            <div className="pop-up-content" ref={(node) => (this.popUpRef = node)}>
+              <Form
+                onSubmit={(values) => {
+                  console.log('Form submitted:', values);
+                  this.closePopUp();
+                }}
+                render={({ handleSubmit, form }) => (
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-row">
+                      <label htmlFor="type">Type:</label>
+                      <select id="type" name="type" value={type} onChange={this.handleTypeChange}>
+                        <option value="">-- Select type --</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="sos">SOS</option>
+                      </select>
+                    </div>
+                    <div className="form-row">
+                      <label htmlFor="name">Name:</label>
+                      <input id="name" name="name" type="text" />
+                    </div>
+                    <div className="form-row">
+                      <label htmlFor="phone">Phone:</label>
+                      <input id="phone" name="phone" type="text" />
+                    </div>
+                    {type === 'doctor' && (
+                      <div className="form-row">
+                        <label htmlFor="doctor">Doctor:</label>
+                        <select id="doctor" name="doctor">
+                          <option value="">-- Select doctor --</option>
+                          <option value="Dr. John">Dr. John</option>
+                          <option value="Dr. Jane">Dr. Jane</option>
+                          <option value="Dr. Mark">Dr. Mark</option>
+                        </select>
+                      </div>
                     )}
-                  </Field>
-                </div>
-              )}
-              <button type="submit">Submit</button>
-            </form>
-          )}
-        </Form>
+                    {type === 'sos' && (
+                      <div className="form-row">
+                        <label htmlFor="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" cols="50" />
+                      </div>
+                    )}
+                    <div className="form-row form-buttons">
+                      <button type="submit">Submit</button>
+                      
+                      <button type="button" onClick={form.reset}>
+                        Reset
+                      </button>
+                      <button type="button" onClick={this.closePopUp}>
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                )}
+              />
+            </div>
+          </div>
+        )}
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default PopUp;
+Popup.propTypes = {};
 
-
-// const PopUp = ({ isDoctorForm, onClose, onSubmit }) => {
-//   const popUpRef = useRef(null);
-
-//   useEffect(() => {
-//     const handleMouseDown = (event) => {
-//       if (popUpRef.current && !popUpRef.current.contains(event.target)) {
-//         onClose();
-//       }=
-//     };
-//     document.body.classList.add("blur-effect"); // add blur-effect class to body element
-//     document.addEventListener("mousedown", handleMouseDown);
-//     return () => {
-//       document.body.classList.remove("blur-effect"); // remove blur-effect class from body element
-//       document.removeEventListener("mousedown", handleMouseDown);
-//     };
-//   }, [onClose]);
-
-//   return (
-//     <div className="popup-container">
-//       <div className="popup" ref={popUpRef}>
-//         <h2>{isDoctorForm ? "Doctor Form" : "Rescue Form"}</h2>
-//         <Form
-//           onSubmit={onSubmit}
-//           render={({ handleSubmit }) => (
-//             <form onSubmit={handleSubmit}>
-//               {/* Form fields */}
-//               <button type="submit">Submit</button>
-//             </form>
-//           )}
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PopUp;
+export default Popup;
