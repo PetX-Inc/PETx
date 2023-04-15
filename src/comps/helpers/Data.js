@@ -19,7 +19,11 @@ let navbar_items = [
 		name: 'Contact',
 		icon: 'fas fa-phone-alt',
 		link: 'contact'
-	}
+	},
+
+	
+
+
 ]
 
 let navbar_accounts = [
@@ -34,6 +38,20 @@ let navbar_accounts = [
 	{
 		link: 'https://twitter.com/',
 		icon: 'fab fa-twitter'
+	},
+
+]
+
+
+let accounts =[
+	{
+
+		
+		name: 'Login',
+		icon: 'fas fa-blog',
+
+		// How to link component of Accounts here
+		link: 'contact'
 	}
 ]
 
@@ -204,6 +222,7 @@ export
 {
 	navbar_items,
 	navbar_accounts,
+	accounts,
 	doctors,
 	top_blogs,
 	recent_blogs,

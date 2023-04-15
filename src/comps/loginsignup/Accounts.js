@@ -4,7 +4,6 @@ import "./Accounts.css"; // import CSS file with blur-effect class
 import React, { useState } from "react";
 
 
-
 function LoginForm() {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -86,16 +85,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
-
-
-// function LoginPage() {
-//   return (
-//     <div>
-//       <h1>Login Page</h1>
-//       <LoginForm />
-//     </div>
-//   );
-// }
-
-// export default LoginPage;
