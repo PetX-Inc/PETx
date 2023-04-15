@@ -54,7 +54,7 @@ class Navbar extends Component
 	render()
 	{
 		return (
-			<nav className="navbar navbar-expand-md sticky-top active py-1 mb-5" id = 'navbar'>
+			<nav className="navbar navbar-expand-md sticky-custom active py-1 mb-5" id = 'navbar'>
 				<div className = 'container'>
 			 		<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    		<span className="navbar-toggler-icon">Ξ</span>
