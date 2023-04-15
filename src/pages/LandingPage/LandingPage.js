@@ -7,7 +7,7 @@ import MetaDecorator from '../../comps/MetaDecorator/MetaDecorator'
 // MohsinCode below
 
 import PopUp from '../../comps/popup/popup'
-import LoginForm from '../../comps/loginsignup/Login'
+import LoginForm from '../../comps/loginsignup/Accounts'
 
 class LandingPage extends Component
 {

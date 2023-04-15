@@ -1,4 +1,4 @@
-import "./Auth.css"; // import CSS file with blur-effect class
+import "./Accounts.css"; // import CSS file with blur-effect class
 
 
 import React, { useState } from "react";
