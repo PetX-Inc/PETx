@@ -11,6 +11,7 @@
   position: relative; }
   .navbar .container .collapse .navbar-nav .link .nav-link::before {
     position: absolute;
+    z-index: 1;
     content: "";
     bottom: 0;
     left: 0;
@@ -29,3 +30,10 @@
     color: white; }
 
 /*# sourceMappingURL=Navbar.css.map */
+
+
+.sticky-custom{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}

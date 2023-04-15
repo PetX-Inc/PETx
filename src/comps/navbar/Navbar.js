@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import './Navbar.css'
 import {navbar_items} from '../helpers/Data'
 import {navbar_accounts} from '../helpers/Data'
+import {accounts} from '../helpers/Data'
 import { Link } from 'react-router-dom'
 
 
@@ -37,10 +38,23 @@ class Navbar extends Component
 		return accounts
 	}
 
+	display_navbar_useraccounts = _ =>
+	{
+		let items = accounts.map(item =>
+		{
+			return (
+				<li className = "nav-item link" key = {Math.random()}>
+			        <Link className = "nav-link p-md-0 py-md-1 px-md-2 me-md-2" to = {`/${item.link}`}><i className = {`${item.icon} me-2`}></i>{item.name}</Link>
+			    </li>
+			)
+		})
+		return items
+	}
+
 	render()
 	{
 		return (
-			<nav className="navbar navbar-expand-md sticky-top active py-1 mb-5" id = 'navbar'>
+			<nav className="navbar navbar-expand-md sticky-custom active py-1 mb-5" id = 'navbar'>
 				<div className = 'container'>
 			 		<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    		<span className="navbar-toggler-icon">Ξ</span>
@@ -51,6 +65,9 @@ class Navbar extends Component
 			    		</ul>
 			    		<ul className = "navbar-nav ml-auto">
 			    			{this.display_navbar_accounts()}
+			    		</ul>
+						<ul className="navbar-nav mr-auto">
+			    			{this.display_navbar_useraccounts()}
 			    		</ul>
 			    	</div>
 			    </div>
