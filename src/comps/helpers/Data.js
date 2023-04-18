@@ -45,12 +45,10 @@ let navbar_accounts = [
 
 let accounts =[
 	{
-
-		
 		name: 'Login',
 		icon: 'fas fa-blog',
 
-		// How to link component of Accounts here
+		// How to link button of login form here
 		link: 'contact'
 	}
 ]

@@ -1,0 +1,80 @@
+.form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="password"],
+  .form-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .form-container button {
+    padding: 10px 20px;
+    background-color: #05a081;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .form-container button:hover {
+    background-color: #04745d;
+  }
+  
+  .form-container .forgot-password {
+    float: right;
+  }
+  
+  .form-container .sign-up {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .form-container .sign-up button {
+    background-color: #05a081;
+  }
+  
+  .form-container .cancel {
+    background-color: #f44336;
+  }
+  
+  .form-container .form-divider {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .form-container .form-divider hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 30%;
+    margin: 0 auto;
+  }
+  
+  .form-container .form-divider span {
+    display: inline-block;
+    background-color: #fff;
+    padding: 0 10px;
+    position: relative;
+    top: -10px;
+  }
+  
