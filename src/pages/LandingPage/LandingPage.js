@@ -6,8 +6,13 @@ import MetaDecorator from '../../comps/MetaDecorator/MetaDecorator'
 
 // MohsinCode below
 
-import PopUp from '../../comps/popup/popup'
-import LoginForm from '../../comps/loginsignup/Accounts'
+import PopUp from '../../comps/popup/popup2'
+//import PopUp from '../../comps/popup/popup'
+
+//import LoginForm from '../../comps/loginsignup/Accounts'
+//import LoginForm from '../../comps/loginsignup/Accounts2'
+import LoginSignUpButton from '../../comps/loginsignup/Accounts2'
+
 
 class LandingPage extends Component
 {
@@ -21,7 +26,7 @@ class LandingPage extends Component
 
                 {/* Dangerous Code by Mohsin */}
 
-                <LoginForm />
+                <LoginSignUpButton />
                 <PopUp />
 
                 <About />
