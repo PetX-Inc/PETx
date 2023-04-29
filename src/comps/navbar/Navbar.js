@@ -3,8 +3,12 @@ import React, {Component} from 'react'
 import './Navbar.css'
 import {navbar_items} from '../helpers/Data'
 import {navbar_accounts} from '../helpers/Data'
-import {accounts} from '../helpers/Data'
+//import {accounts} from '../helpers/Data'
 import { Link } from 'react-router-dom'
+
+
+import LoginSignUpButton from '../../comps/loginsignup/Accounts2'
+
 
 
 class Navbar extends Component
@@ -38,18 +42,24 @@ class Navbar extends Component
 		return accounts
 	}
 
-	display_navbar_useraccounts = _ =>
-	{
-		let items = accounts.map(item =>
-		{
-			return (
-				<li className = "nav-item link" key = {Math.random()}>
-			        <Link className = "nav-link p-md-0 py-md-1 px-md-2 me-md-2" to = {`/${item.link}`}><i className = {`${item.icon} me-2`}></i>{item.name}</Link>
-			    </li>
-			)
-		})
-		return items
-	}
+	// display_navbar_useraccounts = _ =>
+	// {
+	// 	let items = accounts.map(item =>
+	// 	{
+	// 		return (
+	// 			<li className = "nav-item link" key = {Math.random()}>
+	// 								<button>
+	// 									<LoginSignUpButton />
+	// 									LoginSignUp
+	// 								</button>
+	// 		        <Link className = "nav-link p-md-0 py-md-1 px-md-2 me-md-2" to = {`/${item.link}`}><i className = {`${item.icon} me-2`}></i>{item.name}</Link>
+	// 		    </li>
+	// 		)
+	// 	})
+	// 	return items
+
+	// 	//<LoginSignUpButton />
+	// }
 
 	render()
 	{
@@ -66,8 +76,12 @@ class Navbar extends Component
 			    		<ul className = "navbar-nav ml-auto">
 			    			{this.display_navbar_accounts()}
 			    		</ul>
+
+
 						<ul className="navbar-nav mr-auto">
-			    			{this.display_navbar_useraccounts()}
+			    			{/* {this.display_navbar_useraccounts()} */}
+								<LoginSignUpButton />
+
 			    		</ul>
 			    	</div>
 			    </div>

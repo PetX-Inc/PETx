@@ -26,7 +26,7 @@ class LandingPage extends Component
 
                 {/* Dangerous Code by Mohsin */}
 
-                <LoginSignUpButton />
+                {/* <LoginSignUpButton /> */}
                 <PopUp />
 
                 <About />
