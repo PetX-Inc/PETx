@@ -3,3 +3,4 @@ Navbar ka to issue kahin or nai aa rha mairay pas? or SOS form b aik hi page p s
 SOS form ko yar waisay hi rehne dete hain........? Image ki bjae? is trah se jo pop up aa rha woh best he?
 
 Login form ko kaisay navbar p le k aaon in the form of a button?
+how to have a distance between image and profile text?

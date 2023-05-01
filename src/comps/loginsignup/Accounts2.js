@@ -16,7 +16,11 @@ function LoginSignUpButton() {
 
   return (
     <div>
-      <button onClick={handleClick}>Login/Signup</button>
+      <button className="buttonmain" onClick={handleClick}>
+      <img class="rounded-circle" src="https://via.placeholder.com/30x30" alt="">
+        </img>
+              Profile
+        </button>
       {showForm && <LoginForm onClose={handleClose} />}
     </div>
   );

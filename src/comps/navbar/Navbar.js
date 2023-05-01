@@ -73,16 +73,17 @@ class Navbar extends Component
 			    		<ul className="navbar-nav mr-auto">
 			    			{this.display_navbar_items()}
 			    		</ul>
+
 			    		<ul className = "navbar-nav ml-auto">
 			    			{this.display_navbar_accounts()}
 			    		</ul>
-
 
 						<ul className="navbar-nav mr-auto">
 			    			{/* {this.display_navbar_useraccounts()} */}
 								<LoginSignUpButton />
 
 			    		</ul>
+
 			    	</div>
 			    </div>
 			</nav>
