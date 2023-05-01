@@ -117,7 +117,11 @@ class Doctor extends Component
 	render()
 	{
 		return (
-			<section className = 'products py-5 mb-5' id = 'products'>
+			//zindex code by Mohsin
+			//added new line below and commented previous line i.e the next one
+			<section className = 'zindexdoc products py-5 mb-5' id = 'products'>
+
+			{/* </section><section className = 'products py-5 mb-5' id = 'products'> */}
 				<div className = 'container'>
 					<div className = 'title'>
 						<h2 className = 'text-capitalize text-center mb-5 p-3 position-relative'>Doctors</h2>
