@@ -31,7 +31,7 @@ class LandingPage extends Component
                     type= 'sos' 
                  /> */}
 
-                 <PopUp/>
+                 {/* <PopUp/> */}
                 <About />
                 <Subscription />
             </div>

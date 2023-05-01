@@ -9,6 +9,16 @@ class Popup extends Component {
     type: 'sos', // set the default selected form type as SOS
     submittedType: '', // added state variable to hold the submitted type
   };
+
+  handleClose = () => {
+    const { onClose } = this.props;
+    if (onClose) {
+      onClose();
+
+      // this.closePopUp();
+
+    }
+  };
   
 
   componentDidMount() {
@@ -55,8 +65,9 @@ class Popup extends Component {
     const { isOpen, type, submittedType } = this.state;
     return (
       <div className="pop-up-button-wrapper">
-        <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button>
-        {isOpen && (
+        {/* <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button> */}
+        {/* {isOpen &&  */}
+        
           <div className="pop-up-background">
             <div className="pop-up-content" ref={(node) => (this.popUpRef = node)}>
               <Form
@@ -111,8 +122,8 @@ class Popup extends Component {
                       <div className="form-row form-buttons">
                         <button type="submit">Submit</button>
   
-                        <button type="button" onClick={this.closePopUp}>
-                          Cancel
+                        <button type="button" onClick={this.handleClose}>
+                          Cancel/Close
                         </button>
                       </div>
                     </form>
@@ -120,7 +131,8 @@ class Popup extends Component {
                 />
               </div>
             </div>
-          )}
+          
+          {/* } */}
         </div>
       );
     }
