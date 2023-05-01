@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef, Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 
-import PropTypes from 'prop-types';
-
 class Popup extends Component {
+  // latest code
   state = {
     isOpen: false,
-    type: '',
+    type: 'sos', // set the default selected form type as SOS
     submittedType: '', // added state variable to hold the submitted type
   };
+  
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
@@ -122,6 +122,5 @@ class Popup extends Component {
     }
   }
   
-
 
   export default Popup;
