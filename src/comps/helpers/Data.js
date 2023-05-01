@@ -56,52 +56,45 @@ let accounts =[
 let doctors = [
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 1' ,
-		title : 'Dr. Natalia Ch',
-		oldp  : '7999 Rs' ,
-		newp  : '6500 Rs'
+		alt   : 'Doctor 1' ,
+		name : 'Dr. Natalia Ch',
+		fee  : 65
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 2',
-		title : 'Dr. Qasim',
-		oldp  : '9000 Rs' ,
-		newp  : '8500 Rs'
+		alt   : 'Doctor 2',
+		name : 'Dr. Qasim',
+		fee  : 85
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 3',
-		title : 'Dr. Hussain',
-		oldp  : '10000 Rs' ,
-		newp  : '9500 Rs'
+		alt   : 'Doctor 3',
+		name : 'Dr. Hussain',
+		fee  : 95
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 4',
-		title : 'Dr. Khakan',
-		oldp  : '9500 Rs' ,
-		newp  : '8500 Rs'
+		alt   : 'Doctor 4',
+		name : 'Dr. Khakan',
+		fee  : 85
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 5',
-		title : 'Dr. Idrees',
-		oldp  : '7999 Rs' ,
-		newp  : '6500 Rs'
+		alt   : 'Doctor 5',
+		name : 'Dr. Idrees',
+		fee  : 65
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 6',
-		title : 'Dr. Ali',
-		oldp  : '9000 Rs' ,
-		newp  : '8000 Rs'
+		alt   : 'Doctor 6',
+		name : 'Dr. Ali',
+		fee  : 80
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
-		alt   : 'product 7',
-		title : 'Dr. Nabeela',
-		oldp  : '7500 Rs' ,
-		newp  : '7000 Rs'
+		alt   : 'Doctor 7',
+		name : 'Dr. Nabeela',
+		fee  : 70
 	}
 ]
 
