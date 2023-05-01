@@ -3,12 +3,17 @@ import React, {Component} from 'react'
 import './About.css'
 import about from '../../images/pics/sosLight.svg'
 
+
+import PopUp from '../../comps/popup/popup2'
+
+
 class About extends Component
 {
 	handleOnClick()
 	{
-		//Dumy code.
-		alert("SOS Clicked");
+
+			alert("Ok");
+		//<PopUp />
 	}
 
 	render()
@@ -26,7 +31,7 @@ class About extends Component
 						</div>
 						<div className = "c col-md-6 col-12">
 							<div className = 'right-side text-lg-end text-center' onClick={this.handleOnClick}>
-								<img className = 'img-fluid w-75 shadow-lg about' src = {about} alt = 'about' />
+								<img className = 'btn btn-outline-danger text-capitalize btn-sm img-fluid w-75 shadow-lg about' src = {about} alt = 'about' />
 							</div>
 						</div>
 					</div>

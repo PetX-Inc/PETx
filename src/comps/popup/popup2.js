@@ -45,10 +45,14 @@ class Popup extends Component {
   };
 
 
+  handleOnClick = () => {
+    this.setState({ isOpen: true });
+  }
+
+
 
   render() {
     const { isOpen, type, submittedType } = this.state;
-
     return (
       <div className="pop-up-button-wrapper">
         <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button>
@@ -124,3 +128,6 @@ class Popup extends Component {
   
 
   export default Popup;
+
+
+  // function Avatar({ person, size })

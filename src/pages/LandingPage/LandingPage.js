@@ -27,8 +27,11 @@ class LandingPage extends Component
                 {/* Dangerous Code by Mohsin */}
 
                 {/* <LoginSignUpButton /> */}
-                <PopUp />
+                {/* <PopUp
+                    type= 'sos' 
+                 /> */}
 
+                 <PopUp/>
                 <About />
                 <Subscription />
             </div>
