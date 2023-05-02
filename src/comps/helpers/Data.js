@@ -1,3 +1,5 @@
+import LoginSignUpButton from '../../comps/loginsignup/Accounts2'
+
 
 let navbar_items = [
 	{
@@ -43,17 +45,29 @@ let navbar_accounts = [
 ]
 
 
-let accounts =[
-	{
-
+// let accounts =[
+// 	{
 		
-		name: 'Login',
-		icon: 'fas fa-blog',
+// 		return <LoginSignUpButton />
 
-		// How to link component of Accounts here
-		link: 'contact'
-	}
-]
+
+// 	}
+// ]
+
+
+
+
+// let accounts =[
+// 	{
+// 		name: 'Login',
+// 		icon: 'fas fa-blog',
+
+// 		link: <LoginSignUpButton />
+
+// 		// How to link button of login form here
+// 		//link: 'contact'
+// 	}
+// ]
 
 let doctors = [
 	{
@@ -215,7 +229,7 @@ export
 {
 	navbar_items,
 	navbar_accounts,
-	accounts,
+	//accounts,
 	doctors,
 	top_blogs,
 	recent_blogs,

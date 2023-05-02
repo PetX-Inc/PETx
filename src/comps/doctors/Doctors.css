@@ -23,3 +23,9 @@
   font-weight: bolder; }
 
 /*# sourceMappingURL=Products.css.map */
+
+
+.zindexdoc{
+  position: relative;
+  z-index: 0;
+}

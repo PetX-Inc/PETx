@@ -3,83 +3,70 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './Doctors.css'
 import {doctors} from '../helpers/Data'
+import PopUp from '../../comps/popup/popup2';
+
 
 class Doctor extends Component
 {
+	state = {
+		isOpen: false,
+		doctor:'Calling Function'
+	  };
+	
+	  handleOnClick = (doc) => {
+		this.setState({ isOpen: true });
+		this.setState({ doctor: doc.name });
 
-	handleClick(doc)
-	{
-		let amount = doc.fee*100
-		let paymentObj = {
-			redirectUrl: "doctors",
-			stripePaymentObj: {
-				price_data:{
-					currency: 'usd',
-					  product_data:{
-						name: `${doc.name}'s Appointment Fee`
-					},  
-					unit_amount:amount,
-				},
-				quantity: 1
-			}
-		}
+		//window.open(`/form?doctorName=${props.name}`, '_blank');
+	  };
+	
+	  closePopUp = () => {
+		this.setState({ isOpen: false });
+	  };
+
+	// handleClick(doc)
+	// {
+	// 	let amount = doc.fee*100
+	// 	let paymentObj = {
+	// 		redirectUrl: "doctors",
+	// 		stripePaymentObj: {
+	// 			price_data:{
+	// 				currency: 'usd',
+	// 				  product_data:{
+	// 					name: `${doc.name}'s Appointment Fee`
+	// 				},  
+	// 				unit_amount:amount,
+	// 			},
+	// 			quantity: 1
+	// 		}
+	// 	}
 		
-		fetch("http://localhost:8080/process-payment",{
-			method: 'POST',
-			body: JSON.stringify(paymentObj),
-			headers: {
-			  'Content-Type': 'application/json',
-			  'Accept': 'application/json',
-			},
-		})
-		.then((response) => {
-			console.log("Promise response:", response)
-				if (response.ok) return response.json()
-				return response.json().then(json => Promise.reject(json))
-			})
-		.then(({url}) => {
-			window.location = url
-			})
-		.catch((err) => console.log(err))
+	// 	fetch("http://localhost:8080/process-payment",{
+	// 		method: 'POST',
+	// 		body: JSON.stringify(paymentObj),
+	// 		headers: {
+	// 		  'Content-Type': 'application/json',
+	// 		  'Accept': 'application/json',
+	// 		},
+	// 	})
+	// 	.then((response) => {
+	// 		console.log("Promise response:", response)
+	// 			if (response.ok) return response.json()
+	// 			return response.json().then(json => Promise.reject(json))
+	// 		})
+	// 	.then(({url}) => {
+	// 		window.location = url
+	// 		})
+	// 	.catch((err) => console.log(err))
 
-
-
-		/*
-
-		//Payment using AXIOS, currently INTERNAL SERVER ERROR (code:500)
-
-		axios({
-			method: 'POST',
-			url: 'http://localhost:8080/process-payment',
-			headers: {
-			  'Accept': 'application/json',
-			  'Content-Type': 'application/json',
-			},
-			//withCredentials: true,
-			data: JSON.stringify(paymentObj)
-		})
-		.then((response) => {
-				if (response.ok) 
-				{
-					return response.json()
-				}
-			})
-		.then(({url}) => {
-			console.log(url)
-				//window.location = url
-			})
-		.catch((err) => console.log(err)) 
-
-		*/
-
-
-
-	}
+	// }
 
 	display_products = _ =>
 	{
 		let docs = doctors.map(doc =>
 		{
+			const { isOpen } = this.state;
+
 			return (
 				<div className = 'c col-lg-3 col-md-6 col-12 mb-3' key = {Math.random()}>
 					<div className = 'card shadow-lg product-one'>
@@ -103,11 +90,21 @@ class Doctor extends Component
 									<span className = 'second-price d-block'>{doc.fee} USD</span>
 								</div>
 								<div className = 'shop-btn'>
-									<button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleClick(doc)}>Contact</button>
+									Working code
+									{/* <button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={this.handleOnClick}>Appointment</button> */}
+									Test code
+									 <button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleOnClick(doc)}>Appointment</button>
+
+									
+									Hassan code
+									{/* <button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleClick(doc)}>Contact</button> */}
 								</div>
 							</div>
 						</div>
+
 					</div>
+					{isOpen && <PopUp type="doctor" doctor={doc.name} onClose={this.closePopUp} />}
+
 				</div>
 			)
 		})
@@ -117,7 +114,11 @@ class Doctor extends Component
 	render()
 	{
 		return (
-			<section className = 'products py-5 mb-5' id = 'products'>
+			//zindex code by Mohsin
+			//added new line below and commented previous line i.e the next one
+			<section className = 'zindexdoc products py-5 mb-5' id = 'products'>
+
+			{/* </section><section className = 'products py-5 mb-5' id = 'products'> */}
 				<div className = 'container'>
 					<div className = 'title'>
 						<h2 className = 'text-capitalize text-center mb-5 p-3 position-relative'>Doctors</h2>
