@@ -6,7 +6,8 @@ class Popup extends Component {
   // latest code
   state = {
     isOpen: false,
-    type: 'sos', // set the default selected form type as SOS
+    // type: 'sos', // set the default selected form type as SOS
+    type: this.props.type || 'sos',
     submittedType: '', // added state variable to hold the submitted type
   };
 
