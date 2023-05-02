@@ -13,9 +13,9 @@ class Doctor extends Component
 		doctor:'Calling Function'
 	  };
 	
-	  handleOnClick = (doc) => {
+	  handleClick = (doc) => {
 		this.setState({ isOpen: true });
-		this.setState({ doctor: doc.name });
+		this.setState({ doc: doc });
 
 		//window.open(`/form?doctorName=${props.name}`, '_blank');
 	  };
@@ -90,20 +90,12 @@ class Doctor extends Component
 									<span className = 'second-price d-block'>{doc.fee} USD</span>
 								</div>
 								<div className = 'shop-btn'>
-									Working code
-									{/* <button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={this.handleOnClick}>Appointment</button> */}
-									Test code
-									 <button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleOnClick(doc)}>Appointment</button>
-
-									
-									Hassan code
-									{/* <button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleClick(doc)}>Contact</button> */}
+									<button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleClick(doc)}>Contact</button>
 								</div>
 							</div>
 						</div>
 
 					</div>
-					{isOpen && <PopUp type="doctor" doctor={doc.name} onClose={this.closePopUp} />}
 
 				</div>
 			)
@@ -127,6 +119,8 @@ class Doctor extends Component
 						{this.display_products()}
 					</div>
 				</div>
+				{this.state.isOpen && <PopUp type="doctor" doctor={this.state.doc} onClose={this.closePopUp} />}
+
 			</section>
 		)
 	}

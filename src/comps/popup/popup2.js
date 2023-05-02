@@ -3,15 +3,21 @@ import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 
 class Popup extends Component {
+  constructor(props) {
+    super(props)
+  }
   // latest code
   state = {
     isOpen: false,
     // type: 'sos', // set the default selected form type as SOS
     type: this.props.type || 'sos',
-    doctor: this.props.doctor || 'Doctor not Selected',
+
+    doctor: this.props.doctor? this.props.doctor : "Doctor Not Selected",
+    
     submittedType: '', // added state variable to hold the submitted type
   };
 
+  
   handleClose = () => {
     const { onClose } = this.props;
     if (onClose) {
@@ -25,7 +31,6 @@ class Popup extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
-
 
     //already selected doctor code
     //this.setState({doctor: doctor|| '',});
@@ -45,6 +50,7 @@ class Popup extends Component {
 
   openPopUp = () => {
     this.setState({ isOpen: true });
+    
   };
 
   closePopUp = () => {
@@ -59,6 +65,46 @@ class Popup extends Component {
     console.log('Form submitted:', values);
     this.setState({ submittedType: this.state.type }); // update the submitted type
     this.closePopUp();
+
+
+    if (this.state.type === "doctor")
+    {
+      console.log(this.state.doctor)
+
+      let amount = this.state.doctor.fee*100
+      let paymentObj = {
+        redirectUrl: "doctors",
+        stripePaymentObj: {
+          price_data:{
+            currency: 'usd',
+              product_data:{
+              name: `${this.state.doctor.name}'s Appointment Fee`
+            },  
+            unit_amount:amount,
+          },
+          quantity: 1
+        }
+      }
+      
+      fetch("http://localhost:8080/process-payment",{
+        method: 'POST',
+        body: JSON.stringify(paymentObj),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      })
+      .then((response) => {
+        console.log("Promise response:", response)
+          if (response.ok) return response.json()
+          return response.json().then(json => Promise.reject(json))
+        })
+      .then(({url}) => {
+        window.location = url
+        })
+      .catch((err) => console.log(err))
+
+    }
 
   };
 
@@ -112,7 +158,7 @@ class Popup extends Component {
                         </select> */}
 
                           <label htmlFor="doctor">Selected Doctor:</label>
-                          <input id="doctor" name="doctor" type="text" value={doctor} readOnly/>
+                          <input id="doctor" name="doctor" type="text" value={doctor.name} readOnly/>
                         
                       </div>
                     )}
@@ -136,7 +182,7 @@ class Popup extends Component {
                             </button>
 
                             <button type="cancel" onClick={this.handleClose}>
-                              Cancel/Close
+                              Cancel
                             </button>
                       </div>
                     </form>
