@@ -1,6 +1,9 @@
 how to have a distance between image and profile text?
+Navbar issue again
+background issue in Doc Form rendering
+change doctor name based on selection from which card/doctor the form has been clicked..........
 
-
+handle clickoutside for both forms
 
 
 

@@ -8,6 +8,7 @@ class Popup extends Component {
     isOpen: false,
     // type: 'sos', // set the default selected form type as SOS
     type: this.props.type || 'sos',
+    doctor: this.props.doctor || 'Doctor not Selected',
     submittedType: '', // added state variable to hold the submitted type
   };
 
@@ -24,6 +25,12 @@ class Popup extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
+
+
+    //already selected doctor code
+    //this.setState({doctor: doctor|| '',});
+    //this.setState({ doctor: this.props.doctor });
+
   }
 
   componentWillUnmount() {
@@ -61,9 +68,8 @@ class Popup extends Component {
   }
 
 
-
   render() {
-    const { isOpen, type, submittedType } = this.state;
+    const { isOpen, type, doctor, submittedType } = this.state;
     return (
       <div className="pop-up-button-wrapper">
         {/* <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button> */}
@@ -76,11 +82,11 @@ class Popup extends Component {
                 render={({ handleSubmit, form }) => (
                   <form onSubmit={handleSubmit}>
                     <div className="form-row">
-                      <label htmlFor="type">Type:</label>
+                      <label htmlFor="type">Form Type:</label>
                       <select id="type" name="type" value={type} onChange={this.handleTypeChange}>
                         <option value="">-- Select type --</option>
-                        <option value="doctor">Doctor</option>
-                        <option value="sos">SOS</option>
+                        <option value="doctor">Doctor Appointment</option>
+                        <option value="sos">SOS Call</option>
                       </select>
                     </div>
                     <div className="form-row">
@@ -97,13 +103,17 @@ class Popup extends Component {
                     </div>
                     {type === 'doctor' && (
                       <div className="form-row">
-                        <label htmlFor="doctor">Doctor:</label>
+                        {/* <label htmlFor="doctor">Doctor:</label>
                         <select id="doctor" name="doctor">
                           <option value="">-- Select doctor --</option>
                           <option value="Dr. John">Dr. John</option>
                           <option value="Dr. Jane">Dr. Jane</option>
                           <option value="Dr. Mark">Dr. Mark</option>
-                        </select>
+                        </select> */}
+
+                          <label htmlFor="doctor">Selected Doctor:</label>
+                          <input id="doctor" name="doctor" type="text" value={doctor} readOnly/>
+                        
                       </div>
                     )}
                     {type === 'sos' && (
@@ -121,11 +131,13 @@ class Popup extends Component {
                         </>
                       )}
                       <div className="form-row form-buttons">
-                        <button type="submit">Submit</button>
-  
-                        <button type="button" onClick={this.handleClose}>
-                          Cancel/Close
-                        </button>
+                            <button type="submit" onClick={this.handleSubmit}>
+                                {this.props.type === 'doctor' ? 'Payment' : 'Submit'}
+                            </button>
+
+                            <button type="cancel" onClick={this.handleClose}>
+                              Cancel/Close
+                            </button>
                       </div>
                     </form>
                   )}
