@@ -1,4 +1,4 @@
-
+/* 
 .pop-up-button {
   position: relative;
   display: inline-block;
@@ -38,7 +38,7 @@
 
 .pop-up-button:hover::before {
   opacity: 1;
-}
+} */
 
 
 
@@ -82,7 +82,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
 
-  z-index: 98;
 
   display: flex;
   justify-content: center;
@@ -100,7 +99,7 @@
 
   transform: translate(-50%, -50%);
   padding: 20px;
-  z-index: 99;  
+  z-index: 9999;  
 
    /* Hassan code for frosted glass effect  */
 

@@ -137,3 +137,6 @@ form-container:not(:focus-within) {
 }
 
 
+.discl{
+  margin-right: 10px;
+}

@@ -17,7 +17,7 @@ function LoginSignUpButton() {
   return (
     <div>
       <button className="buttonmain" onClick={handleClick}>
-      <img class="rounded-circle" src="https://via.placeholder.com/30x30" alt="">
+      <img class="rounded-circle discl" src="https://via.placeholder.com/30x30" alt="">
         </img>
               Profile
         </button>

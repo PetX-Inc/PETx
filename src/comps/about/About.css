@@ -19,3 +19,10 @@
   border-radius: 50%;
 }
 /*# sourceMappingURL=About.css.map */
+
+
+.buttonimage:hover 
+{
+    background-color: #ff6a78;
+}
+
