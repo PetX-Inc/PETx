@@ -139,6 +139,12 @@ class Popup extends Component {
                       <label htmlFor="email">Email:</label>
                       <input id="email" name="email" type="email" />
                     </div>
+
+
+                    <div className="form-row">
+                            <label htmlFor="description">Description:</label>
+                            <textarea id="description" name="description" rows="4" cols="50" />
+                          </div>
                     {type === 'doctor' && (
                       <div className="form-row">
                           <label htmlFor="doctor">Selected Doctor:</label>
@@ -154,10 +160,7 @@ class Popup extends Component {
                             <input id="location" name="location" type="text" />
                           </div>
   
-                          <div className="form-row">
-                            <label htmlFor="description">Description:</label>
-                            <textarea id="description" name="description" rows="4" cols="50" />
-                          </div>
+                          
                         </>
                       )}
                       <div className="form-row form-buttons">
