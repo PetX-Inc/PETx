@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 //import './Accounts2.css'; // import the CSS file
 import "./Accounts2.css"; // import CSS file with blur-effect class
 
 
 function LoginSignUpButton() {
   const [showForm, setShowForm] = useState(false);
+  // const history = useHistory();
+
 
   const handleClick = () => {
     setShowForm(true);
@@ -26,14 +31,19 @@ function LoginSignUpButton() {
   );
 }
 
+
 function LoginForm({ onClose }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showSignUpForm, setShowSignUpForm] = useState(false);
+  const history = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
     // handle login logic here
+    //setIsOpen(false);
+    onClose(); // call the onClose callback function to close the form
+    history('/doctors'); // navigate to the '/doctors' route
   };
 
   const handleForgotPassword = () => {
@@ -116,7 +126,7 @@ function SignUpForm({ onCancel }) {
     event.preventDefault();
     // handle sign up logic here
   };
-  
+
   return (
     <div className="form-container">
       <h2 className="form-title">Sign Up</h2>
