@@ -43,7 +43,7 @@ function LoginForm({ onClose }) {
     // handle login logic here
     //setIsOpen(false);
     onClose(); // call the onClose callback function to close the form
-    history('/doctors'); // navigate to the '/doctors' route
+    history('/'); // navigate to the 'default homepage' route
   };
 
   const handleForgotPassword = () => {
