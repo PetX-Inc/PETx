@@ -69,48 +69,57 @@ let navbar_accounts = [
 // 	}
 // ]
 
+let rescuers=['bsef19m047@pucit.edu.pk','bsef19m033@pucit.edu.pk','bsef19m031@pucit.edu.pk','bsef19m037@pucit.edu.pk']
+
 let doctors = [
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 1' ,
 		name : 'Dr. Natalia Ch',
-		fee  : 65
+		fee  : 65,
+		email : 'natalia.chaudhry@pucit.edu.pk'
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 2',
 		name : 'Dr. Qasim',
-		fee  : 85
+		fee  : 85,
+		email : 'msalehbutt@gmail.com'
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 3',
 		name : 'Dr. Hussain',
-		fee  : 95
+		fee  : 95,
+		email : 'msalehbutt@gmail.com'
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 4',
 		name : 'Dr. Khakan',
-		fee  : 85
+		fee  : 85,
+		email : 'msalehbutt@gmail.com'
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 5',
 		name : 'Dr. Idrees',
-		fee  : 65
+		fee  : 65,
+		email : 'msalehbutt@gmail.com'
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 6',
 		name : 'Dr. Ali',
-		fee  : 80
+		fee  : 80,
+		email : 'msalehbutt@gmail.com'
 	},
 	{
 		img   : require('../../images/pics/products/docF.png'),
 		alt   : 'Doctor 7',
 		name : 'Dr. Nabeela',
-		fee  : 70
+		fee  : 70,
+		email : 'msalehbutt@gmail.com'
 	}
 ]
 
@@ -235,5 +244,6 @@ export
 	recent_blogs,
 	faq_items,
 	contact,
-	MetaObjects
+	MetaObjects,
+	rescuers
 }

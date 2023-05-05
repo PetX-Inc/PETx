@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
+    "emailjs": "^4.0.1",
     "final-form": "^4.20.9",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -24,6 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start": "react-scripts start",
     "petx": "react-scripts start",
     "petxServer": "nodemon server/server.js",
     "build": "react-scripts build",
