@@ -1,6 +1,20 @@
 import React, { useState, useEffect, useRef, Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
+import {rescuers} from '../helpers/Data'
+function sendEmail(formData , recipientEmail) {
+  console.log('here')
+
+  window.Email.send({
+    SecureToken : "45cfeea2-dfe7-40a2-b739-979e3ebfcec6",
+    To : recipientEmail,
+    From : "honeybutt203@gmail.com",
+    Subject : "KI HAAL AYYYYYYY",
+    Body : "THK OO NAAAAAA"
+}).then(
+ // message => alert(message)
+);
+}
 
 class Popup extends Component {
   constructor(props) {
@@ -60,13 +74,24 @@ class Popup extends Component {
   handleTypeChange = (event) => {
     this.setState({ type: event.target.value });
   };
-
+   
+  
   handleSubmit = (values) => {
     console.log('Form submitted:', values);
     this.setState({ submittedType: this.state.type }); // update the submitted type
     this.closePopUp();
 
+    if (this.state.type === 'doctor') {
+         
+      // send email to selected doctor
+      sendEmail(values,this.state.doctor.email);
+    } else {
+      // send email to team members
+      sendEmail(values, rescuers);
+    }
 
+    this.closePopUp();
+    
     if (this.state.type === "doctor")
     {
       console.log(this.state.doctor)
