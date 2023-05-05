@@ -90,7 +90,7 @@ class Doctor extends Component
 									<span className = 'second-price d-block'>{doc.fee} USD</span>
 								</div>
 								<div className = 'shop-btn'>
-									<button className = 'btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleClick(doc)}>Contact</button>
+									<button className = 'zindexcheck btn btn-outline-success text-capitalize btn-sm' onClick={()=>this.handleClick(doc)}>Contact</button>
 								</div>
 							</div>
 						</div>

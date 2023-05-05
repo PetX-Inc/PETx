@@ -47,11 +47,13 @@ class About extends Component {
               <div
                 className="right-side text-lg-end text-center"
                 onClick={this.handleOnClick}>
-                <img
-                  className="btn btn-outline-danger text-capitalize btn-sm img-fluid w-75 shadow-lg about"
-                  src={about}
-                  alt="about"
-                />
+                  <img
+                    className="btn buttonimage text-capitalize btn-sm img-fluid w-75 about"
+                    // className="btn button text-capitalize btn-sm img-fluid w-75 shadow-lg about"
+
+                    src={about}
+                    alt="about"
+                  />
               </div>
             </div>
           </div>

@@ -22,20 +22,12 @@ class Popup extends Component {
     const { onClose } = this.props;
     if (onClose) {
       onClose();
-
-      // this.closePopUp();
-
     }
   };
   
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
-
-    //already selected doctor code
-    //this.setState({doctor: doctor|| '',});
-    //this.setState({ doctor: this.props.doctor });
-
   }
 
   componentWillUnmount() {
@@ -147,16 +139,14 @@ class Popup extends Component {
                       <label htmlFor="email">Email:</label>
                       <input id="email" name="email" type="email" />
                     </div>
+
+
+                    <div className="form-row">
+                            <label htmlFor="description">Description:</label>
+                            <textarea id="description" name="description" rows="4" cols="50" />
+                          </div>
                     {type === 'doctor' && (
                       <div className="form-row">
-                        {/* <label htmlFor="doctor">Doctor:</label>
-                        <select id="doctor" name="doctor">
-                          <option value="">-- Select doctor --</option>
-                          <option value="Dr. John">Dr. John</option>
-                          <option value="Dr. Jane">Dr. Jane</option>
-                          <option value="Dr. Mark">Dr. Mark</option>
-                        </select> */}
-
                           <label htmlFor="doctor">Selected Doctor:</label>
                           <input id="doctor" name="doctor" type="text" value={doctor.name} readOnly/>
                         
@@ -170,10 +160,7 @@ class Popup extends Component {
                             <input id="location" name="location" type="text" />
                           </div>
   
-                          <div className="form-row">
-                            <label htmlFor="description">Description:</label>
-                            <textarea id="description" name="description" rows="4" cols="50" />
-                          </div>
+                          
                         </>
                       )}
                       <div className="form-row form-buttons">
@@ -199,6 +186,3 @@ class Popup extends Component {
   
 
   export default Popup;
-
-
-  // function Avatar({ person, size })
