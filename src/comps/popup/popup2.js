@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef, Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 import {rescuers} from '../helpers/Data'
-function sendEmail(formData , recipientEmail) {
+function sendEmail(formData , recipientEmail,subject ,body) {
   console.log('here')
 
   window.Email.send({
     SecureToken : "45cfeea2-dfe7-40a2-b739-979e3ebfcec6",
     To : recipientEmail,
     From : "honeybutt203@gmail.com",
-    Subject : "KI HAAL AYYYYYYY",
-    Body : "THK OO NAAAAAA"
+    Subject : subject,
+    Body : body
 }).then(
  // message => alert(message)
 );
@@ -75,11 +75,19 @@ class Popup extends Component {
 
     if (this.state.type === 'doctor') {
          
+      let clientName=document.getElementById("name").value;
+      let clientEmail=document.getElementById("email").value;
+      let subject = "Request for Appointment";
+      let body = `Request for appointment from  ${clientName}   ${clientEmail}`;
       // send email to selected doctor
-      sendEmail(values,this.state.doctor.email);
+      sendEmail(values,this.state.doctor.email,subject,body);
     } else {
+      let clientName=document.getElementById("name").value;
+      let clientEmail=document.getElementById("email").value;
       // send email to team members
-      sendEmail(values, rescuers);
+      let subject =  " SOS Service Call ";
+      let body = `Request for appointment from  ${clientName}   ${clientEmail}`;
+      sendEmail(values, rescuers,subject,body);
     }
 
     this.closePopUp();
