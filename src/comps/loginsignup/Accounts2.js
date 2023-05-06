@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
-
-//import './Accounts2.css'; // import the CSS file
 import "./Accounts2.css"; // import CSS file with blur-effect class
 
 
 function LoginSignUpButton() {
   const [showForm, setShowForm] = useState(false);
-  // const history = useHistory();
 
-
-  const handleClick = () => {
+  const handleOpen = () => {
     setShowForm(true);
   };
 
@@ -21,11 +16,10 @@ function LoginSignUpButton() {
 
   return (
     <div>
-      <button className="buttonmain" onClick={handleClick}>
-      <img class="rounded-circle discl" src="https://via.placeholder.com/30x30" alt="">
-        </img>
-              Profile
-        </button>
+      <button className="buttonmain" onClick={handleOpen}>
+        <img class="rounded-circle discl" src="https://via.placeholder.com/30x30" alt=""></img>
+        Profile
+      </button>
       {showForm && <LoginForm onClose={handleClose} />}
     </div>
   );
@@ -36,14 +30,13 @@ function LoginForm({ onClose }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showSignUpForm, setShowSignUpForm] = useState(false);
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
     // handle login logic here
-    //setIsOpen(false);
     onClose(); // call the onClose callback function to close the form
-    history('/'); // navigate to the 'default homepage' route
+    navigate('/'); // navigate to the 'default homepage' route
   };
 
   const handleForgotPassword = () => {
@@ -51,12 +44,22 @@ function LoginForm({ onClose }) {
   };
 
   const handleSignUpClick = () => {
+
+
+
     setShowSignUpForm(true);
   };
 
   if (showSignUpForm) {
     return <SignUpForm onCancel={() => setShowSignUpForm(false)} />;
+    //{showForm && <LoginForm onClose={handleClose} />}
+
   }
+
+  const handleLoginFormClose = () => {
+    setShowSignUpForm(false);
+    onClose();
+  };
 
   return (
     <div className="form-container">
@@ -110,14 +113,24 @@ function LoginForm({ onClose }) {
           </button>
         </div>
       </form>
-      <button className="form-button cancel" onClick={onClose}>
-        Close
-      </button>
+
+      <div className="form-group text-center mt-2">
+        <button
+          type="button"
+          className="form-button btn btn-primary btn-sm cancel"
+          onClick={onClose}
+        >
+          Close Form
+        </button>
+      </div>
     </div>
   );
 }
 
-function SignUpForm({ onCancel }) {
+
+function SignUpForm({onCancel, onClose}) {
+
+//function SignUpForm({ onCancel, onClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -125,6 +138,14 @@ function SignUpForm({ onCancel }) {
   const handleSignUp = (event) => {
     event.preventDefault();
     // handle sign up logic here
+  };
+
+  const handleCancel = () => {
+    onCancel();
+  };
+
+  const handleClose = () => {
+    onClose();
   };
 
   return (
@@ -143,13 +164,21 @@ function SignUpForm({ onCancel }) {
           <label htmlFor="confirmPassword" className="form-label">Confirm Password:</label>
           <input type="password" id="confirmPassword" className="form-input" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} />
         </div>
-        <button type="submit" className="form-button">Sign Up</button>
-        <button type="button" className="form-button cancel" onClick={onCancel}>Have an account? Login</button>
+        <div className='form-group text-center'>
+          <button type="submit" className="form-button">Sign Up</button>
+          <button type="button" className="form-button cancel" onClick={handleCancel}>Have an account? Login</button>
+        </div>
+        <div className="form-group text-center mt-2">
+          {/* <button type='button' className="form-button btn btn-primary btn-sm cancel" onClick={handleClose}>Close Form</button> */}
+          {/* <button type='button' className="form-button btn btn-primary btn-sm cancel" onClick={onClose}>Close Form</button> */}
+          <button type='button' className="form-button btn btn-primary btn-sm cancel" onClick={onCancel}>Close Form</button>
+
+
+        </div>
       </form>
     </div>
   );
 }
-
 
 //export default LoginForm;
 export default LoginSignUpButton;

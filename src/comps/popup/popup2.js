@@ -144,14 +144,14 @@ class Popup extends Component {
                 onSubmit={this.handleSubmit} // call the handleSubmit method
                 render={({ handleSubmit, form }) => (
                   <form onSubmit={handleSubmit}>
-                    <div className="form-row">
+                    {/* <div className="form-row">
                       <label htmlFor="type">Form Type:</label>
                       <select id="type" name="type" value={type} onChange={this.handleTypeChange}>
                         <option value="">-- Select type --</option>
                         <option value="doctor">Doctor Appointment</option>
                         <option value="sos">SOS Call</option>
                       </select>
-                    </div>
+                    </div> */}
                     <div className="form-row">
                       <label htmlFor="name">Name:</label>
                       <input id="name" name="name" type="text" />
