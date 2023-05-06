@@ -7,13 +7,14 @@ import {doctors} from '../../comps/helpers/Data'
 import { MetaObjects } from '../../comps/helpers/Data';
 import MetaDecorator from '../../comps/MetaDecorator/MetaDecorator';
 
-const Doctors = () => {
-    //this is the problem by Mohsin
-  const [doctors1, setDoctors] = useState([]);
 
-  const handleAddDoctor = (newDoctor) => {
-    setDoctors([...doctors, newDoctor]);
-  };
+const Doctors = () => {
+  //this is the problem by Mohsin
+const [doctors1, setDoctors] = useState([]);
+
+const handleAddDoctor = (newDoctor) => {
+  setDoctors([...doctors, newDoctor]);
+};
 
   let MetaObject = MetaObjects.filter((obj) => obj.For === 'Doctors')[0];
 
