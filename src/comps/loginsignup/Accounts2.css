@@ -1,26 +1,19 @@
 .form-container {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
-
-
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999; /* This will make the form appear on top of everything else */
-    background-color: #fff; /* This will give the form a white background */
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* This will give the form a shadow */
-
-    /* display: none;  */
-    /* This will hide the form by default */
-    
   }
   
   .form-container h2 {
@@ -122,19 +115,11 @@
   
 
 .buttonmain:focus + .form-container {
-  display: block;
+
+  visibility: visible;
 }
 
 
-/* This will close the form when the user clicks outside of it */
-form-container:focus-within {
-  display: block;
-}
-
-/* This will hide the form when it's not focused */
-form-container:not(:focus-within) {
-  display: none;
-}
 
 
 .discl{

@@ -1,5 +1,3 @@
-import LoginSignUpButton from '../../comps/loginsignup/Accounts2'
-
 
 let navbar_items = [
 	{
@@ -23,8 +21,6 @@ let navbar_items = [
 		link: 'contact'
 	},
 
-	
-
 
 ]
 
@@ -44,30 +40,6 @@ let navbar_accounts = [
 
 ]
 
-
-// let accounts =[
-// 	{
-		
-// 		return <LoginSignUpButton />
-
-
-// 	}
-// ]
-
-
-
-
-// let accounts =[
-// 	{
-// 		name: 'Login',
-// 		icon: 'fas fa-blog',
-
-// 		link: <LoginSignUpButton />
-
-// 		// How to link button of login form here
-// 		//link: 'contact'
-// 	}
-// ]
 
 let rescuers=['bsef19m047@pucit.edu.pk','bsef19m033@pucit.edu.pk','bsef19m031@pucit.edu.pk','bsef19m037@pucit.edu.pk']
 
