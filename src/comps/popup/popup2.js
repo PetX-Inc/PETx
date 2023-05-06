@@ -18,7 +18,15 @@ function sendEmail(formData , recipientEmail,subject ,body) {
 
 class Popup extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    
+    this.state = {
+      name: '',
+      email: '',
+      phone: '',
+      desc : '',
+      doctorName: ''
+    };
   }
   // latest code
   state = {
@@ -42,6 +50,11 @@ class Popup extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
+
+
+
+
+
   }
 
   componentWillUnmount() {
@@ -175,13 +188,13 @@ class Popup extends Component {
 
 
                     <div className="form-row">
-                            <label htmlFor="description">Description:</label>
-                            <textarea id="description" name="description" rows="4" cols="50" />
+                            <label htmlFor="desc">Description:</label>
+                            <textarea id="desc" name="desc" rows="4" cols="50" />
                           </div>
                     {type === 'doctor' && (
                       <div className="form-row">
-                          <label htmlFor="doctor">Selected Doctor:</label>
-                          <input id="doctor" name="doctor" type="text" value={doctor.name} readOnly/>
+                          <label htmlFor="doctorName">Selected Doctor:</label>
+                          <input id="doctor" name="doctorName" type="text" value={doctor.name} readOnly/>
                         
                       </div>
                     )}

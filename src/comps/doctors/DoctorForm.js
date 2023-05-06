@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 
@@ -9,7 +10,7 @@ const DoctorForm = ({ addDoctor }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newDoctor = {
       img: require('../../images/pics/products/docF.png'),
@@ -19,6 +20,17 @@ const DoctorForm = ({ addDoctor }) => {
       email,
     };
     addDoctor(newDoctor);
+
+    const res = await axios.post("http://localhost:8000/api/doctors/createDoctor", {name,email});
+    console.log(res)
+    if(res.status === 201){
+      alert("Doctor Added")
+    }
+    else{
+      alert("Email already registered")
+    }
+
+
     handleClose();
   };
 

@@ -1,17 +1,25 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 
 const AddBlog = ({ addBlog }) => {
   const [showModal, setShowModal] = useState(false);
   const [blogTitle, setBlogTitle] = useState('');
-  const [blogContent, setBlogContent] = useState('');
+  const [blogBody, setBlogBody] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addBlog(blogTitle, blogContent);
+    addBlog(blogTitle, blogBody);
     setShowModal(false);
     setBlogTitle('');
-    setBlogContent('');
+    setBlogBody('');
+
+    const res = await axios.post("http://localhost:8000/api/blogs/createblog", {blogTitle, blogBody})
+
+    console.log(res)
+    if (res.status === 200){
+      alert("Blog Added")
+    }
   };
 
   return (
@@ -44,8 +52,8 @@ const AddBlog = ({ addBlog }) => {
                 rows={12}
                 // columns={40}
                 placeholder="Enter blog content"
-                value={blogContent}
-                onChange={(e) => setBlogContent(e.target.value)}
+                value={blogBody}
+                onChange={(e) => setBlogBody(e.target.value)}
               />
             </Form.Group>
             <Button variant="primary" type="submit">
