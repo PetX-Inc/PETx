@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './About.css';
 import about from '../../images/pics/sosLight.svg';
-import PopUp from '../../comps/popup/popup2';
+import PopUp from '../../comps/popup/popupsos';
 
 class About extends Component {
   state = {

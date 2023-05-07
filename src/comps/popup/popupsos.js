@@ -3,7 +3,6 @@ import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 import {rescuers} from '../helpers/Data'
 import axios  from 'axios';
-
 function sendEmail(formData , recipientEmail,subject ,body) {
   console.log('here')
 
@@ -26,10 +25,10 @@ class Popup extends Component {
   this.state = {
     isOpen: false,
     // type: 'sos', // set the default selected form type as SOS
-    type: this.props.type || 'sos',
-    doctor: this.props.doctor? this.props.doctor : "Doctor Not Selected",
+    // type: this.props.type || 'sos',
+    // doctor: this.props.doctor? this.props.doctor : "Doctor Not Selected",
     
-    submittedType: '', // added state variable to hold the submitted type
+    // submittedType: '', // added state variable to hold the submitted type
 
     name: '',
     email: '',
@@ -85,7 +84,7 @@ class Popup extends Component {
   handleSubmit = (values) => {
 
     console.log('Form submitted:', values);
-    const { name, email, phone, description, location, doctor} = this.state;
+    const { name, email, phone, description, location} = this.state;
 
     axios.post('API Route', 
     {
@@ -93,8 +92,7 @@ class Popup extends Component {
       email,
       phone,
       description,
-      location,
-      doctor
+      location
     })
     .then(response => {
       console.log(response.data);
@@ -107,63 +105,54 @@ class Popup extends Component {
     this.setState({ submittedType: this.state.type }); // update the submitted type
     this.closePopUp();
 
-    if (this.state.type === 'doctor') {
-         
-      let clientName=document.getElementById("name").value;
-      let clientEmail=document.getElementById("email").value;
-      let subject = "Request for Appointment";
-      let body = `Request for appointment from  ${clientName}   ${clientEmail}`;
-      // send email to selected doctor
-      sendEmail(values,this.state.doctor.email,subject,body);
-    } else {
+    
       let clientName=document.getElementById("name").value;
       let clientEmail=document.getElementById("email").value;
       // send email to team members
       let subject =  " SOS Service Call ";
       let body = `Request for appointment from  ${clientName}   ${clientEmail}`;
       sendEmail(values, rescuers,subject,body);
-    }
 
     this.closePopUp();
     
-    if (this.state.type === "doctor")
-    {
-      console.log(this.state.doctor)
+    // if (this.state.type === "doctor")
+    // {
+    //   console.log(this.state.doctor)
 
-      let amount = this.state.doctor.fee*100
-      let paymentObj = {
-        redirectUrl: "doctors",
-        stripePaymentObj: {
-          price_data:{
-            currency: 'usd',
-              product_data:{
-              name: `${this.state.doctor.name}'s Appointment Fee`
-            },  
-            unit_amount:amount,
-          },
-          quantity: 1
-        }
-      }
+    //   let amount = this.state.doctor.fee*100
+    //   let paymentObj = {
+    //     redirectUrl: "doctors",
+    //     stripePaymentObj: {
+    //       price_data:{
+    //         currency: 'usd',
+    //           product_data:{
+    //           name: `${this.state.doctor.name}'s Appointment Fee`
+    //         },  
+    //         unit_amount:amount,
+    //       },
+    //       quantity: 1
+    //     }
+    //   }
       
-      fetch("http://localhost:8080/process-payment",{
-        method: 'POST',
-        body: JSON.stringify(paymentObj),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      })
-      .then((response) => {
-        console.log("Promise response:", response)
-          if (response.ok) return response.json()
-          return response.json().then(json => Promise.reject(json))
-        })
-      .then(({url}) => {
-        window.location = url
-        })
-      .catch((err) => console.log(err))
+    //   fetch("http://localhost:8080/process-payment",{
+    //     method: 'POST',
+    //     body: JSON.stringify(paymentObj),
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Accept': 'application/json',
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log("Promise response:", response)
+    //       if (response.ok) return response.json()
+    //       return response.json().then(json => Promise.reject(json))
+    //     })
+    //   .then(({url}) => {
+    //     window.location = url
+    //     })
+    //   .catch((err) => console.log(err))
 
-    }
+    // }
 
   };
 
@@ -176,7 +165,7 @@ class Popup extends Component {
   render() {
     console.log('Current state:', this.state); // log the current state to console
 
-    const { isOpen, type, doctor, submittedType } = this.state;
+    const { isOpen } = this.state;
     return (
       <div className="pop-up-button-wrapper">
         {/* <button className='pop-up-button' onClick={this.openPopUp}>SOS | Doctor</button> */}
@@ -214,15 +203,15 @@ class Popup extends Component {
                             <label htmlFor="description">Description:</label>
                             <textarea id="description" name="description" rows="4" cols="50" />
                           </div>
-                    {type === 'doctor' && (
+                    {/* {type === 'doctor' && (
                       <div className="form-row">
                           <label htmlFor="doctor">Selected Doctor:</label>
                           <input id="doctor" name="doctor" type="text" value={doctor.name} readOnly/>
                         
                       </div>
-                    )}
-                    {type === 'sos' && (
-                      <>
+                    )} */}
+                    {/* {type === 'sos' && (
+                      <> */}
                         <div className="form-row">
                           <label htmlFor="location">Location:</label>
 
@@ -230,11 +219,12 @@ class Popup extends Component {
                           </div>
   
                           
-                        </>
-                      )}
+                        {/* </>
+                      )} */}
                       <div className="form-row form-buttons">
                             <button type="submit" onClick={this.handleSubmit}>
-                                {this.props.type === 'doctor' ? 'Payment' : 'Submit'}
+                              Submit
+                                {/* {this.props.type === 'doctor' ? 'Payment' : 'Submit'} */}
                             </button>
 
                             <button type="cancel" onClick={this.handleClose}>

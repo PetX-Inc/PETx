@@ -3,7 +3,6 @@ import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 import {rescuers} from '../helpers/Data'
 import axios  from 'axios';
-
 function sendEmail(formData , recipientEmail,subject ,body) {
   console.log('here')
 
