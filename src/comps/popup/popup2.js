@@ -38,7 +38,11 @@ class Popup extends Component {
 
 
     // state handling
-    
+    name : "",
+    phone : "",
+    email : "",
+    desc : "",
+    doctorName : "",
   };
 
   
