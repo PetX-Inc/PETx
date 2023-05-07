@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef, Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 import {rescuers} from '../helpers/Data'
+
+import axios from 'axios';
+
 function sendEmail(formData , recipientEmail,subject ,body) {
   console.log('here')
 
@@ -19,15 +22,10 @@ function sendEmail(formData , recipientEmail,subject ,body) {
 class Popup extends Component {
   constructor(props) {
     super(props);
-    
-    this.state = {
-      name: '',
-      email: '',
-      phone: '',
-      desc : '',
-      doctorName: ''
-    };
   }
+
+
+
   // latest code
   state = {
     isOpen: false,
@@ -37,6 +35,10 @@ class Popup extends Component {
     doctor: this.props.doctor? this.props.doctor : "Doctor Not Selected",
     
     submittedType: '', // added state variable to hold the submitted type
+
+
+    // state handling
+    
   };
 
   
@@ -50,11 +52,6 @@ class Popup extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
-
-
-
-
-
   }
 
   componentWillUnmount() {
@@ -77,7 +74,12 @@ class Popup extends Component {
   };
 
   handleTypeChange = (event) => {
+    
     this.setState({ type: event.target.value });
+    // const { name, value } = event.target;
+    
+
+
   };
    
   
@@ -139,11 +141,22 @@ class Popup extends Component {
         })
       .then(({url}) => {
         window.location = url
-        })
+      })
       .catch((err) => console.log(err))
 
     }
 
+    values.preventDefault();
+
+    axios.post('http://localhost:8080/api/appt/createappt', this.state)
+      .then(response => {
+        console.log(response);
+        // handle success
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
 
@@ -175,26 +188,26 @@ class Popup extends Component {
                     </div> */}
                     <div className="form-row">
                       <label htmlFor="name">Name:</label>
-                      <input id="name" name="name" type="text" />
+                      <input id="name" name="name" type="text" value={this.state.name} onChange={this.handleChange} />
                     </div>
                     <div className="form-row">
                       <label htmlFor="phone">Phone:</label>
-                      <input id="phone" name="phone" type="text" />
+                      <input id="phone" name="phone" type="text"  value={this.state.phone} onChange={this.handleChange} />
                     </div>
                     <div className="form-row">
                       <label htmlFor="email">Email:</label>
-                      <input id="email" name="email" type="email" />
+                      <input id="email" name="email" type="email" value={this.state.email} onChange={this.handleChange} />
                     </div>
 
 
                     <div className="form-row">
                             <label htmlFor="desc">Description:</label>
-                            <textarea id="desc" name="desc" rows="4" cols="50" />
+                            <textarea id="desc" name="desc" rows="4" cols="50" value={this.state.desc}/>
                           </div>
                     {type === 'doctor' && (
                       <div className="form-row">
                           <label htmlFor="doctorName">Selected Doctor:</label>
-                          <input id="doctor" name="doctorName" type="text" value={doctor.name} readOnly/>
+                          <input id="doctorName" name="doctorName" type="text" value={doctor.name} readOnly/>
                         
                       </div>
                     )}

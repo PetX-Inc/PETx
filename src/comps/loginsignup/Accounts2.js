@@ -40,7 +40,7 @@ function LoginForm({ onClose }) {
     onClose(); // call the onClose callback function to close the form
     navigate('/'); // navigate to the 'default homepage' route
 
-    const res = await axios.post("http://localhost:8000/api/users/login", {email, password}) 
+    const res = await axios.post("http://localhost:8080/api/users/login", {email, password}) 
     console.log(res.status.toString())
 
     if (res.status === 200){
@@ -157,7 +157,7 @@ function SignUpForm({onCancel, onClose}) {
       email,password
     }
 
-    const res = await axios.post("http://localhost:8000/api/users/createuser",newUser)
+    const res = await axios.post("http://localhost:8080/api/users/createuser",newUser)
     if (res.status === 201){
       alert("User Created Successfully")
     }

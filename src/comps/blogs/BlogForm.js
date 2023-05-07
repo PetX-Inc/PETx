@@ -14,7 +14,7 @@ const AddBlog = ({ addBlog }) => {
     setBlogTitle('');
     setBlogBody('');
 
-    const res = await axios.post("http://localhost:8000/api/blogs/createblog", {blogTitle, blogBody})
+    const res = await axios.post("http://localhost:8080/api/blogs/createblog", {blogTitle, blogBody})
 
     console.log(res)
     if (res.status === 200){

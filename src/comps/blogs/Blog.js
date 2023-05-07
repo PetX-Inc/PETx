@@ -14,7 +14,7 @@ class Blog extends Component
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:8000/api/blogs/getall').then(response => {
+		axios.get('http://localhost:8080/api/blogs/getall').then(response => {
 		  this.setState({ blogs: response.data });
 		  console.log(response.data)
 		}).catch(error => {

@@ -21,7 +21,7 @@ const DoctorForm = ({ addDoctor }) => {
     };
     addDoctor(newDoctor);
 
-    const res = await axios.post("http://localhost:8000/api/doctors/createDoctor", {name,email});
+    const res = await axios.post("http://localhost:8080/api/doctors/createDoctor", {name,email});
     console.log(res)
     if(res.status === 201){
       alert("Doctor Added")
