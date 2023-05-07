@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Accounts2.css"; // import CSS file with blur-effect class
 
+import axios from 'axios';
+
 
 function LoginSignUpButton() {
   const [showForm, setShowForm] = useState(false);
@@ -27,16 +29,28 @@ function LoginSignUpButton() {
 
 
 function LoginForm({ onClose }) {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     // handle login logic here
     onClose(); // call the onClose callback function to close the form
     navigate('/'); // navigate to the 'default homepage' route
+
+    const res = await axios.post("http://localhost:8080/api/users/login", {email, password}) 
+    console.log(res.status.toString())
+
+    if (res.status === 200){
+      alert("Logged in successfully")
+    }
+    else if (res.status === 400){
+      alert("Invalid Credentials")
+    }
+    console.log(res.status)
+
   };
 
   const handleForgotPassword = () => {
@@ -73,8 +87,8 @@ function LoginForm({ onClose }) {
             type="text"
             id="username"
             className="form-input"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="form-group">
@@ -135,9 +149,21 @@ function SignUpForm({onCancel, onClose}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSignUp = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
     // handle sign up logic here
+
+    const newUser = {
+      email,password
+    }
+
+    const res = await axios.post("http://localhost:8080/api/users/createuser",newUser)
+    if (res.status === 201){
+      alert("User Created Successfully")
+    }
+    else{
+      alert("Some Unexpected Error occured : User already registered")
+    }
   };
 
   const handleCancel = () => {

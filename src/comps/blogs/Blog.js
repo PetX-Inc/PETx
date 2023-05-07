@@ -1,15 +1,33 @@
 
 import React, {Component} from 'react'
 import './Blogs.css'
+import axios from 'axios';
 
 class Blog extends Component
 {
+	constructor(props)
+	{
+		super(props)
+		this.state = {
+			blogs: []
+		};
+	}
+
+	componentDidMount() {
+		axios.get('http://localhost:8080/api/blogs/getall').then(response => {
+		  this.setState({ blogs: response.data });
+		  console.log(response.data)
+		}).catch(error => {
+		  console.error(error);
+		});
+	  }
+	
+
 	display_top_blogs = _ =>
 	{
-
 		const { blogs } = this.props;
 		// const { isOpen } = this.state;
-	
+		
 		if (!blogs) {
 		  return null;
 		}
