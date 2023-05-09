@@ -1,7 +1,15 @@
 require("dotenv").config()
 const express = require("express")
+const colors = require('colors');
+const bodyParser = require('body-parser');
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const cors = require("cors")
+
+
+
+const connectDB  = require("../backend/config/db");
+ 
+connectDB()
 
 const app = express()
 
@@ -10,6 +18,7 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(express.static("public"))
+app.use(express.urlencoded({ extended: true }));
 
 
 app.post("/process-payment", async (req,res) => {
@@ -34,5 +43,15 @@ app.post("/process-payment", async (req,res) => {
     }
     
 })
+
+
+
+
+app.use("/api/blogs", require("../backend/routes/blogRoutes"))
+app.use("/api/users", require("../backend/routes/userRoutes"))
+app.use("/api/doctors", require("../backend/routes/doctorRoutes"))
+app.use("/api/appt", require("../backend/routes/apptRoutes"))
+
+
 
 app.listen(8080)

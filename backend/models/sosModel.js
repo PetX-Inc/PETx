@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const apptSchema = mongoose.Schema({
+const sosSchema = mongoose.Schema({
     name  :{
         type : String,
     },
@@ -10,14 +10,15 @@ const apptSchema = mongoose.Schema({
     email : {
         type: String
     },
-    doctorName : {
-        type: String
-    },
     desc : {
         type : String
+    },
+    location :{
+        type : String
     }
+    
 },{
     timestamps : true
 })
 
-module.exports = mongoose.model("Appt",apptSchema);
+module.exports = mongoose.model("Sos",sosSchema);

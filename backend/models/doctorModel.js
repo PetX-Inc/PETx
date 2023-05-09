@@ -19,7 +19,7 @@ const doctorSchema = mongoose.Schema({
     },
     fee : {
         type : Number,
-        // required : [true, "Enter your payment fee"]
+        required : [true, "Enter your payment fee"]
     },
     // Foreign keys
     fiatId : {

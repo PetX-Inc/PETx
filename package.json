@@ -31,9 +31,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
     "petx": "react-scripts start",
-    "petxServer": "nodemon backend/server.js",
+    "petxServer": "nodemon server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
