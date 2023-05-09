@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
+import './Doctors.css'
+
 
 const DoctorForm = ({ addDoctor }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [fee, setFee] = useState('');
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,7 +20,7 @@ const DoctorForm = ({ addDoctor }) => {
       img: require('../../images/pics/products/docF.png'),
       alt: 'Doctor 1',
       name,
-      fee: 65,
+      fee,
       email,
     };
     addDoctor(newDoctor);
@@ -37,7 +41,7 @@ const DoctorForm = ({ addDoctor }) => {
   return (
     <>
         <div className='text-center m-3'>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary" className='adddocform' onClick={handleShow}>
                 Add new Doctor
             </Button>
         </div>
@@ -58,9 +62,15 @@ const DoctorForm = ({ addDoctor }) => {
               <Form.Control type="email" placeholder="Enter email" value={email} onChange={(event) => setEmail(event.target.value)} />
             </Form.Group>
 
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-              Submit
-            </Button>
+            <Form.Group controlId="formBasicFee">
+              <Form.Label>Fee</Form.Label>
+              <Form.Control type="text" placeholder="Enter your fee" value={fee} onChange={(event) => setFee(event.target.value)} />
+            </Form.Group>
+            
+              <Button variant="primary" type="submit" className='adddocform' onClick={handleSubmit}>
+                Submit
+              </Button>
+          
           </Form>
         </Modal.Body>
         <Modal.Footer>

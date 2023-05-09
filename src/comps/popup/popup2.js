@@ -209,7 +209,6 @@ class Popup extends Component {
                       <input id="email" name="email" type="email" />
                     </div>
 
-
                     <div className="form-row">
                             <label htmlFor="description">Description:</label>
                             <textarea id="description" name="description" rows="4" cols="50" />

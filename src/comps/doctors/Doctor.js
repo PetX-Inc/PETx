@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './Doctors.css'
 //import {doctors} from '../helpers/Data'
-import PopUp from '../../comps/popup/popupdoc';
+import PopUp from '../../comps/popup/popup2';
 
 
 class Doctor extends Component
