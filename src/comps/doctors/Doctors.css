@@ -35,3 +35,16 @@
   background-color: red;
   z-index: 7;
 } */
+
+
+
+.adddocform{
+  background-color: #05a081;
+}
+
+
+.adddocform:hover{
+  background-color: #04745d;
+
+}
+

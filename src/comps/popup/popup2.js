@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef, Component } from 'react';
 import { Form, Field } from 'react-final-form';
 import "./popup.css"; // import CSS file with blur-effect class
 import {rescuers} from '../helpers/Data'
-
-import axios from 'axios';
+import axios  from 'axios';
 
 function sendEmail(formData , recipientEmail,subject ,body) {
   console.log('here')
@@ -22,29 +21,24 @@ function sendEmail(formData , recipientEmail,subject ,body) {
 class Popup extends Component {
   constructor(props) {
     super(props);
-  }
-
-
-
+  
   // latest code
-  state = {
+  this.state = {
     isOpen: false,
     // type: 'sos', // set the default selected form type as SOS
     type: this.props.type || 'sos',
-
     doctor: this.props.doctor? this.props.doctor : "Doctor Not Selected",
     
     submittedType: '', // added state variable to hold the submitted type
 
-
-    // state handling
-    name : "",
-    phone : "",
-    email : "",
-    desc : "",
-    doctorName : "",
+    name: '',
+    email: '',
+    phone: '',
+    description:'',
+    location:''
+    
   };
-
+  }
   
   handleClose = () => {
     const { onClose } = this.props;
@@ -78,17 +72,38 @@ class Popup extends Component {
   };
 
   handleTypeChange = (event) => {
-    
     this.setState({ type: event.target.value });
-    // const { name, value } = event.target;
-    
-
-
   };
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
    
   
   handleSubmit = (values) => {
+
     console.log('Form submitted:', values);
+    const { name, email, phone, description, location, doctor} = this.state;
+
+    axios.post('API Route', 
+    {
+      name,
+      email,
+      phone,
+      description,
+      location,
+      doctor
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  
+
     this.setState({ submittedType: this.state.type }); // update the submitted type
     this.closePopUp();
 
@@ -145,22 +160,11 @@ class Popup extends Component {
         })
       .then(({url}) => {
         window.location = url
-      })
+        })
       .catch((err) => console.log(err))
 
     }
 
-    values.preventDefault();
-
-    axios.post('http://localhost:8080/api/appt/createappt', this.state)
-      .then(response => {
-        console.log(response);
-        // handle success
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error);
-      });
   };
 
 
@@ -170,6 +174,8 @@ class Popup extends Component {
 
 
   render() {
+    console.log('Current state:', this.state); // log the current state to console
+
     const { isOpen, type, doctor, submittedType } = this.state;
     return (
       <div className="pop-up-button-wrapper">
@@ -192,26 +198,25 @@ class Popup extends Component {
                     </div> */}
                     <div className="form-row">
                       <label htmlFor="name">Name:</label>
-                      <input id="name" name="name" type="text" value={this.state.name} onChange={this.handleChange} />
+                      <input id="name" name="name" type="text" />
                     </div>
                     <div className="form-row">
                       <label htmlFor="phone">Phone:</label>
-                      <input id="phone" name="phone" type="text"  value={this.state.phone} onChange={this.handleChange} />
+                      <input id="phone" name="phone" type="text" />
                     </div>
                     <div className="form-row">
                       <label htmlFor="email">Email:</label>
-                      <input id="email" name="email" type="email" value={this.state.email} onChange={this.handleChange} />
+                      <input id="email" name="email" type="email" />
                     </div>
 
-
                     <div className="form-row">
-                            <label htmlFor="desc">Description:</label>
-                            <textarea id="desc" name="desc" rows="4" cols="50" value={this.state.desc}/>
+                            <label htmlFor="description">Description:</label>
+                            <textarea id="description" name="description" rows="4" cols="50" />
                           </div>
                     {type === 'doctor' && (
                       <div className="form-row">
-                          <label htmlFor="doctorName">Selected Doctor:</label>
-                          <input id="doctorName" name="doctorName" type="text" value={doctor.name} readOnly/>
+                          <label htmlFor="doctor">Selected Doctor:</label>
+                          <input id="doctor" name="doctor" type="text" value={doctor.name} readOnly/>
                         
                       </div>
                     )}
