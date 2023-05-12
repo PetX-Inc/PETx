@@ -14,12 +14,12 @@ const blogSchema = mongoose.Schema({
         type : String,
         required : [true , "Place some text in the body of blog"]
     },
-    upVotes : {
-        type : Number
-    },
-    downVotes : {
-        type : Number
-    }
+    // upVotes : {
+    //     type : Number
+    // },
+    // downVotes : {
+    //     type : Number
+    // }
 
 },{
     timestamps : true

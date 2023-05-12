@@ -17,6 +17,22 @@ const Blogs = () => {
     setBlogs([...top_blogs, newBlog]);
   };
 
+  
+//   useEffect(() => {
+//     axios.get('http://localhost:8080/api/blogs/getAll')
+//       .then(response => {
+//         setBlogs(response.data);
+//         console.log(blogs)
+//         console.log("BEfore blogs")
+//         // console.log(blogs)
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       });
+//   }, []);
+
+  
+
 
 // class Blogs extends Component
 // {

@@ -123,6 +123,7 @@ class Popup extends Component {
 
     this.closePopUp();
     
+    // commented till line 168
     if (this.state.type === "doctor")
     {
       console.log(this.state.doctor)
@@ -162,7 +163,17 @@ class Popup extends Component {
 
     }
 
-  };
+    // saad's work 
+
+  //   if (this.state.type === "doctor")
+  //       axios.post("http://localhost:8080/api/appt/createAppt")
+  //       .then(res => {
+  //         console.log(res)
+  //         alert("Appointment done")
+  //       })
+  //       .catch(err => console.log(err))
+  // };
+  }
 
 
   handleOnClick = () => {

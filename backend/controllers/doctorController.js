@@ -5,9 +5,9 @@ const User = require("../models/userModel")
 
 const registerDoctor =  asyncHandler (async (req,res) => {
     
-    const { name, email, /*password ,qualification, fee*/ } = req.body
+    const { name, email, fee /*password ,qualification, */ } = req.body
 
-    if (!name || !email /*|| !password*/) {
+    if (!name || !email  || !fee/*|| !password*/) {
       res.status(401)
       throw new Error('Please add all fields')
     }
@@ -25,9 +25,7 @@ const registerDoctor =  asyncHandler (async (req,res) => {
     const doctor = await Doctor.create({
       name,
       email,
-      // password ,
-      // qualification, 
-      // fee
+      fee
     })
   
     if (doctor) {
@@ -35,6 +33,7 @@ const registerDoctor =  asyncHandler (async (req,res) => {
         _id: doctor.id,
         name: doctor.name,
         email: doctor.email,
+        fee : doctor.fee,
       })
     } else {
       res.status(400)
@@ -58,6 +57,18 @@ const loginDoctor = asyncHandler(async(req,res) => {
 })
 
 
+const getAllDoctors = asyncHandler(async(req,res) => {
+
+  const doctors = await Doctor.find()
+    if (doctors)
+    {
+        console.log(doctors)
+    }
+    res.status(200).json(doctors);
+
+})
+
+
 module.exports = {
-    registerDoctor, loginDoctor,  
+    registerDoctor, loginDoctor,  getAllDoctors
 }
