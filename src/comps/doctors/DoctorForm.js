@@ -30,7 +30,6 @@ const DoctorForm = ({ addDoctor }) => {
       alert("Email already registered")
     }
 
-
     handleClose();
   };
 

@@ -6,7 +6,6 @@ const createAppt = asyncHandler(async(req,res) => {
     const { name, phone, email, doctorName, desc} =  req.body;
 
     if(!name ||  !phone  || !email || !doctorName || !desc) {
-        console.log("Please add all the fields")
         throw new Error("Please add all the fields")
     }
 
