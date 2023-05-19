@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react'
 import './Blogs.css'
-import axios from 'axios';
+import Photo from "../../images/pics/blogs/6.jpg"
 
 class Blog extends Component
 {
@@ -13,21 +13,12 @@ class Blog extends Component
 		};
 	}
 
-	// componentDidMount() {
-	// 	axios.get('http://localhost:8080/api/blogs/getall').then(response => {
-	// 	  this.setState({ blogs: response.data });
-	// 	  console.log(this.state.blogs)
-	// 	}).catch(error => {
-	// 	  console.error(error);
-	// 	});
-	//   }
 	
 
 	display_top_blogs = _ =>
 	{
 		const { blogs } = this.props;
 		// const { isOpen } = this.state;
-		
 		if (!blogs) {
 		  return null;
 		}
@@ -37,9 +28,11 @@ class Blog extends Component
 			return (
 				<div className = 'c col-lg-6 col-12 mb-4' key = {Math.random()}>
 					<div className = 'card shadow-lg'>
-						<img className = 'card-img-top' src = {item.img} alt = {item.alt}/>
+						<img className = 'card-img-top' src = {Photo} alt = {item.alt}/>
 						<div className = 'card-body'>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+							{/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p> */}
+							<h1>{item.blogTitle}</h1>
+							<p>{item.blogBody}</p>
 							<button className = 'btn btn-outline-success btn-sm text-capitalize'>read more<i className="ms-2 fas fa-chevron-right"></i></button>
 						</div>
 					</div>
