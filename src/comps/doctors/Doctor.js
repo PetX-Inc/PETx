@@ -5,12 +5,14 @@ import './Doctors.css'
 //import {doctors} from '../helpers/Data'
 import PopUp from '../../comps/popup/popup2';
 
+import DocImage from "../../images/pics/products/docF.png"
 
 class Doctor extends Component
 {
 	state = {
 		isOpen: false,
-		doctor:'Calling Function'
+		doctor:'Calling Function',
+		doctors : []
 	  };
 	
 	  handleClick = (doc) => {
@@ -61,6 +63,8 @@ class Doctor extends Component
 
 	// }
 
+	
+
 	display_products = _ =>
 	{
 		const { doctors } = this.props;
@@ -88,7 +92,7 @@ class Doctor extends Component
 									</div>
 								</div>
 								<div className = 'card-body'>
-									<img className = 'img-fluid' src = {doc.img} alt = {doc.alt} />
+									<img className = 'img-fluid' src = {DocImage} alt = {doc.alt} />
 								</div>
 								<div className = "card-footer">
 									<div className = 'pricing d-flex justify-content-between align-items-center'>
