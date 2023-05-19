@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Blog from '../../comps/blogs/Blog' 
 import AddBlog from '../../comps/blogs/BlogForm' 
-import {top_blogs, recent_blogs} from '../../comps/helpers/Data'
+//import {top_blogs, recent_blogs} from '../../comps/helpers/Data'
 import { useEffect, useState } from "react";
 
 
@@ -14,7 +14,7 @@ const Blogs = () => {
   const [blogs1, setBlogs] = useState([]);
 
   const handleAddBlog = (newBlog) => {
-    setBlogs([...top_blogs, newBlog]);
+    setBlogs([...blogs1, newBlog]);
   };
 
   
@@ -49,7 +49,7 @@ const Blogs = () => {
             <div className = '_body'>
                 <MetaDecorator obj={MetaObject}/>
 
-                <Blog blogs={top_blogs} />
+                <Blog blogs={blogs1} />
                 <AddBlog addBlog={handleAddBlog} />
             </div>
             
