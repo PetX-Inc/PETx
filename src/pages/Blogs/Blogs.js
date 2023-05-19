@@ -4,14 +4,26 @@ import AddBlog from '../../comps/blogs/BlogForm'
 //import {top_blogs, recent_blogs} from '../../comps/helpers/Data'
 import { useEffect, useState } from "react";
 
-
 import {MetaObjects} from '../../comps/helpers/Data'
 import MetaDecorator from '../../comps/MetaDecorator/MetaDecorator'
 
+import axios from 'axios';
 
 const Blogs = () => {
+
+
+
     //this is the problem by Mohsin
   const [blogs1, setBlogs] = useState([]);
+
+  useEffect(()=> {
+    axios.get('http://localhost:8080/api/blogs/getall').then(response => {
+        setBlogs(response.data)
+      }).catch(error => {
+        console.error(error);
+      });    
+  },[])
+
 
   const handleAddBlog = (newBlog) => {
     setBlogs([...blogs1, newBlog]);
