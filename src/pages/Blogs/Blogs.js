@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Blog from '../../comps/blogs/Blog' 
 import AddBlog from '../../comps/blogs/BlogForm' 
-import {top_blogs, recent_blogs} from '../../comps/helpers/Data'
+//import {top_blogs, recent_blogs} from '../../comps/helpers/Data'
 import { useEffect, useState } from "react";
 
 import {MetaObjects} from '../../comps/helpers/Data'
