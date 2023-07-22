@@ -19,7 +19,7 @@ function LoginSignUpButton() {
   return (
     <div>
       <button className="buttonmain" onClick={handleOpen}>
-        <img class="rounded-circle discl" src="https://via.placeholder.com/30x30" alt=""></img>
+        {/* <img class="rounded-circle discl" src="https://via.placeholder.com/30x30" alt=""></img> */}
         Profile
       </button>
       {showForm && <LoginForm onClose={handleClose} />}
